@@ -24,21 +24,32 @@ public class InetAddressExample {
                      if (!addrList.hasMoreElements()){
                          out.println("\t(Ninguna dirección para esta Interfaz)"); //Salida de lista vacía                
                      }
-                     while (addrList.hasMoreElements()){
+                     while (addrList.hasMoreElements()){ //Iterar a través de la lista de direcciones, imprimiento cada dirección // Comprobamos cada caso para determinar qué subtipo es. (En este momento los únicos subtipos de InetAddress son los de la lista, pero posiblemente podría haber otros algún día). La   getHostAddress () de InetAddress devuelve una cadena que representa el numérica dirección en el formato apropiado para su tipo específico: quad-salpicado por v4, Colonna separados hexadecimal para v6. Ver las sinopsis "representaciones de Cuerda" a continuación para obtener una descripción de los diferentes formatos de dirección. 
                          InetAddress address = addrList.nextElement();
                          out.print("\tDirección "
                              + ((address instanceof Inet4Address ? "(v4)"
                                 : (address instanceof Inet6Address ? "(v6)" : "(?)"))));
                          out.println(": " + address.getHostAddress());
-                     }
-                 }//Fin while Interface List
+                     }//Fin while addrList
+                 }//Fin while InterfaceList
              }
-         
-         }
+           }// Fin del try
          catch(SocketException se){
-            out.println("Error al obtener las interfaces de red: " + se.getMessage());
+            out.println("Error al obtener las interfaces de red: " + se.getMessage()); //La llamada a getNetworkInterfaces () puede lanzar una SocketException.
          }
-         //
+         //Obtener el nombre (s) / dirección (es) de los ejércitos dado en la línea de comandos
+         for(String host : args){ //Obtiene los nombres y direcciones para cada argumento de línea de comandos
+             try{
+                 out.println(host + ":");
+                 InetAddress[] addressList = InetAddress.getAllByName(host); //Obtener lista de direcciones para el nombre / dirección indicada
+                 for (InetAddress address : addressList) { //Iterar a través de la lista, la impresión de cada uno //  Para cada host en la lista, imprimimos el nombre que devuelve gethostname (), seguido por el dirección numérica que devuelve getHostAddress (). 
+                     out.println("\t" + address.getHostAddress() + "/" + address.getHostAddress());
+                 }
+             }
+             catch (UnknownHostException e){
+                 out.println("\t Unable to find address for " + host );
+             }
+         }
          
          
     }
