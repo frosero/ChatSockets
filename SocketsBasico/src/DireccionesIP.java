@@ -32,9 +32,15 @@ public class DireccionesIP {
           
           //OBTENEMOS TODAS LAS DIRECCIONES IP DE UN EQUIPO
           InetAddress[] identidades; // Declaración del objeto (como poner una etiqueta al objeto)
-          identidades = InetAddress.getAllByName(equipo.getHostName());
-          
+          identidades = InetAddress.getAllByName(equipo.getHostName()); //getAllByName Regresa un arreglo de objetos de tipo InetAddress. Este método es útil en caso de que quieras averiguar todas las direcciones IP que tenga asignada una máquina en particular
+          for (int i = 0; i < identidades.length; i++) 
+              out.println("Id" + i + ":" + identidades[i]);
+          out.println();
       } //Fin try
+      catch (UnknownHostException e){
+          out.println("Error de conexión");
+          out.println(e.toString());
+      }//Fin del catch
   }  //Fin de public static void main(String[] args)
     
     
