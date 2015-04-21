@@ -47,7 +47,7 @@ public class InetAddressExample {
                  }
              }
              catch (UnknownHostException e){
-                 out.println("\t Unable to find address for " + host );
+                 out.println("\t Incapaz encontrar la dirección para " + host );
              }
          }
          
