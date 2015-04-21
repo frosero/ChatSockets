@@ -10,7 +10,7 @@ import static java.lang.System.*;
 public class InetAddressExample {
      public static void main(String[] args){
         
-        //Obtener las interfaces de red y las direcciones correctas para el anfitrión
+        //Obtener las interfaces de red y las direcciones correctas del anfitrión
          try{
              Enumeration<NetworkInterface> interfaceList = NetworkInterface.getNetworkInterfaces(); // Los getNetworkInterfaces método estático, devuelve una lista que contiene una instancia de NetworkInterface para cada una de las interfaces del host. 
              if (interfaceList == null){  // La interfaz de bucle de retorno es generalmente siempre se incluye, incluso si el host no tiene ninguna otra red conexión, por lo que esta comprobación tendrá éxito si el host no tiene subsistema de red en absoluto
@@ -37,7 +37,7 @@ public class InetAddressExample {
          catch(SocketException se){
             out.println("Error al obtener las interfaces de red: " + se.getMessage()); //La llamada a getNetworkInterfaces () puede lanzar una SocketException.
          }
-         //Obtener el nombre (s) / dirección (es) de los ejércitos dado en la línea de comandos
+         //Obtener el nombre (s) / dirección (es) de los host dada en línea de comandos
          for(String host : args){ //Obtiene los nombres y direcciones para cada argumento de línea de comandos
              try{
                  out.println(host + ":");
