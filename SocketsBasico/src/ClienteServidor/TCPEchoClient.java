@@ -1,7 +1,7 @@
-package ClienteServidor;
-import java.net.Socket;
-import java.net.SocketException;
-import java.io.IOException;
+package ClienteServidor;                                                        //NOTA IMPORTANTE: PARA PROBAR EL PROGRAMA
+import java.net.Socket;                                                         // 1. Correr la clase servidor TCPEchoServer.java ingresando como parámetro un puerto no ocupado (los puertos están ocupados desde 1 al 1023)  //para ingresar un argumento, (click derecho en el proyecto > Propiedades > run(o ejecutar) > Argumentos > [escribimos el parámetro o parámetros separados por espacios de ser más de uno])
+import java.net.SocketException;                                                // 2. Mientras la clase TCPEchoServer.java se está ejecutando, ingresamos los 3 parámetros en la clase TCPEchoClient.java. Tomar en cuenta que el tercer parámetro es el puerto que usa el servidor(clase arrancada anteriormente) y este debe ser igual. Los parámetros a ingresar son Host, Mensaje, Puerto
+import java.io.IOException;                                                     //Aclaración final: Los parámetros para la clase TCPEchoClient.java si se va aprobar desde una misma máquina los argumentos serían 127.0.0.1 "mensaje" [Puerto]
 import java.io.InputStream;
 import java.io.OutputStream;
 
