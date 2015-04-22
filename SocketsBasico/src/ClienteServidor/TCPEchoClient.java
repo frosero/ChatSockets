@@ -1,5 +1,4 @@
 package ClienteServidor;
-import static java.lang.System.*;
 import java.net.Socket;
 import java.net.SocketException;
 import java.io.IOException;
@@ -28,8 +27,10 @@ public class TCPEchoClient {
                                                         */
         System.out.println("Conectado al servidor... enviando cadena eco(Echo) ");
         
-        InputStream in = socket.getInputStream();   /*  Para poder leer los datos por sockets*/
-        OutputStream out = socket.getOutputStream();
+        InputStream in = socket.getInputStream();   /*  Para poder leer los datos por sockets, el objeto tipo Sockets devuelve un objeto 'InputStream' o 'OutputStream' según el caso*/
+        OutputStream out = socket.getOutputStream(); /* Para el envío de datos (Output) se puede usar directamente OutputStream en el caso de
+                                                        que SE QUIERA ENVIAR UN FLUJO DE BYTES SIN BÚFER o también un objeto tipo "Stream" 
+                                                        basado en el OutputStream que proporciona el socket(como en este caso). */
         
         out.write(data); //Envía la cadena codificada al servidor.
         
@@ -38,12 +39,15 @@ public class TCPEchoClient {
         int bytesRcvd; //total de bytes recibidos en la última lectura.
         while(totalBytesRcvd < data.length){
             if ((bytesRcvd = in.read(data, totalBytesRcvd, 
-                    data.length - totalBytesRcvd)) == -1) 
+                    data.length - totalBytesRcvd)) == -1){    //El método Read() el número total de bytes leídos en la memoria intermedia, 
+                                                             //ó -1 si no hay más datos porque se ha alcanzado el final de la secuencia. 
             throw new SocketException("Conexión cerrada prematuramente...");
-            totalBytesRcvd += bytesRcvd;
+            }//Fin del IF
+            
+            totalBytesRcvd += bytesRcvd; //cuenta el número de bytes totales.
         } //La matriz de datos (Data array) está llena
         
-        System.out.println("Received: " + new String(data));
+        System.out.println("Recibido: " + new String(data));
         
         socket.close(); //Cierre del Socket y sus flujos de datos.
         
