@@ -23,7 +23,7 @@ public class TCPEchoServer {
             Socket clntSock = servSock.accept(); //Obtiene, acepta o abre la conexión al cliente. //Cuando se establece una conexión esta bloquea cualquier otra conexión, el resto de conexiones quedan en cola.
             
             SocketAddress clientAddress = clntSock.getRemoteSocketAddress(); //Obtiene la dirección del cliente //
-            out.println("Manejo de cliente en " + clientAddress);
+            out.println("Servicio dado al cliente en " + clientAddress);
             
             InputStream in = clntSock.getInputStream();
             OutputStream out = clntSock.getOutputStream();
