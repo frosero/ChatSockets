@@ -8,8 +8,8 @@ import java.io.OutputStream;
 //INSTALACIÓN DE APLICACIONES Y PARÁMETROS DE ANÁLISIS
 public class TCPEchoClient {
     public static void main(String[] args) throws IOException { //throws, permite manejar la excepción sin dar un tratamiento específico, quiere decir q si se produce una excepción el programa lanza (throws) a otro pedazo de código su ejecución; lo que no pasa con los bloques (try/catch)
-        //if ((args.length < 2) || (args.length > 3)) // Prueba de un correcto número de argumentos.
-        //    throw new IllegalArgumentException("Parámetro(s): <Servidor> <Palabra> <Puerto>"); //cuando ocurre la excepción nos regresa un mensaje (manejo de excepciones cuando los métodos no son compatibles con todos los tipos de parámatros)
+        if ((args.length < 2) || (args.length > 3)) // Prueba de un correcto número de argumentos.
+           throw new IllegalArgumentException("Parámetro(s): <Servidor> <Palabra> <Puerto>"); //cuando ocurre la excepción nos regresa un mensaje (manejo de excepciones cuando los métodos no son compatibles con todos los tipos de parámatros)
         
         String server = args[0]; //Nombre del servidor o dirección IP
         //Convierte la cadena a bytes usando la decodificación de caracteres por defecto.
