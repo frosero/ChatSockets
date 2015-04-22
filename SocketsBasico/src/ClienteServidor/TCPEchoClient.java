@@ -18,6 +18,17 @@ public class TCPEchoClient {
         
         int servPort = (args.length == 3) ? Integer.parseInt(args[2]) : 7;
         
+        //CREA SOCKET QUE SE CONECTA AL SERVIDOR SOBRE UN PUERTO ESPECÍFICO
+        Socket socket = new Socket(server, servPort);  //Crea un objeto de clase Socket que recibe 2 parámetros
+        out.println("Conectado al servidor... enviando cadena eco ");
+        
+        InputStream in = socket.getInputStream();
+        OutputStream out = socket.getOutputStream();
+        
+        out.write(data); //Envía la cadena codificada al servidor.
+        
+        //RECIBE LA MISMA CADENA DENUEVO DESDE EL SERVIDOR
+        
     }
     
 }
