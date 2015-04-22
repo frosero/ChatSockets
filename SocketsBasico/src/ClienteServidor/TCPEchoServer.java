@@ -8,8 +8,8 @@ public class TCPEchoServer {
     private static final int BUFSIZE = 32; //Tamaño del búfer de recepción
     
     public static void main(String[] args) throws IOException {
-        //if (args.length != 1) //Prueba del número correcto de argumentos
-          //  throw new IllegalArgumentException("Parametro(s): <Port>");
+        if (args.length != 1) //Prueba del número correcto de argumentos
+           throw new IllegalArgumentException("Parametro(s): <Port>");
         
         int servPort = Integer.parseInt(args[0]);
         
