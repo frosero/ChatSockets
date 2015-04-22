@@ -9,7 +9,7 @@ public class TCPEchoServer {
     
     public static void main(String[] args) throws IOException {
         if (args.length != 1) //Prueba del número correcto de argumentos
-           throw new IllegalArgumentException("Parametro(s): <Port>");
+           throw new IllegalArgumentException("Parámetro(s): <Puerto>");
         
         int servPort = Integer.parseInt(args[0]);
         
