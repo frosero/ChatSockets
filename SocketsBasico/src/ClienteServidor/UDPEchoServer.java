@@ -6,12 +6,12 @@ import java.net.DatagramSocket;
 
 public class UDPEchoServer {
 
-  private static final int ECHOMAX = 255; // Maximum size of echo datagram
+  private static final int ECHOMAX = 255; // Longitud mázima del datagrama
 
   public static void main(String[] args) throws IOException {
 //
-    if (args.length != 1) { // Test for correct argument list
-      throw new IllegalArgumentException("Parameter(s): <Port>");
+    if (args.length != 1) { // Prueba del número correcto de argumentos
+      throw new IllegalArgumentException("Parámetro(s): <Puerto>");
     }
 
     int servPort = Integer.parseInt(args[0]);
@@ -19,12 +19,12 @@ public class UDPEchoServer {
     DatagramSocket socket = new DatagramSocket(servPort);
     DatagramPacket packet = new DatagramPacket(new byte[ECHOMAX], ECHOMAX);
 
-    while (true) { // Run forever, receiving and echoing datagrams
-      socket.receive(packet); // Receive packet from client
+    while (true) { // Corre por siempre, recibiendo y haciendo eco al datagrama
+      socket.receive(packet); // Recibe el paquete del cliente
       out.println("Handling client at " + packet.getAddress().getHostAddress() + " on port " + packet.getPort());
-      socket.send(packet); // Send the same packet back to client
-      packet.setLength(ECHOMAX); // Reset length to avoid shrinking buffer
+      socket.send(packet); // Envía el mismo paquete denuevo al cliente
+      packet.setLength(ECHOMAX); // Cambia la longitud para evitar la reducción del buffer
     }
-    /* NOT REACHED */
+    
   }
 }
