@@ -1,5 +1,5 @@
 package ClienteServidor;                            //NOTA IMPORTANTE: en UDP no es necesario correr primero el servidor y luego el cliente, ya que funciona como un buzón de mensajes
-import static java.lang.System.*;                                                    //El cliente espera unos segundos antes de descartar el mensaje si no obtiene respuesta del servidor. el número de puerto siempre debe ser el mismo
+import static java.lang.System.*;                   //El cliente espera unos segundos antes de descartar el mensaje si no obtiene respuesta del servidor. el número de puerto siempre debe ser el mismo
 import java.net.DatagramSocket;                     //Parámetros a ingredar(ejemplo): en UDPEchoClientTimeOut.java >> 127.0.0.1 "hola UDP" 1025 
 import java.net.DatagramPacket;                     // en UDPEchoServer.java >> 1025
 import java.net.InetAddress;
