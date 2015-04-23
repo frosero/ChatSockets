@@ -37,7 +37,7 @@ public class UDPEchoClientTimeout {
     int tries = 0;      // Los paquetes se pueden perder, entonces se sigue intentando
     boolean receivedResponse = false;
     do {
-      socket.send(sendPacket);          // Envía la cadena ECO (Echo)
+      socket.send(sendPacket);          // Envía la cadena ECO (Echo) //Se permite longitudes de paquetes de 2^16 bytes.
       try {
         socket.receive(receivePacket);  // intento de recepción por parte de la cadena ECO (Echo)
 
