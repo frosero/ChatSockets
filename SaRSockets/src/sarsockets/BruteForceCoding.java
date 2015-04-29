@@ -66,12 +66,23 @@ public class BruteForceCoding {
         //Nota:  El byte, short, int y long se codifica en la matriz en la secuencia descrita anterior. 
         int offset = encodeIntBigEndian(message, byteVal, 0, BSIZE); //Parametrizar objeto offset
         offset = encodeIntBigEndian(message, shortVal, offset, SSIZE);
-        offset = encodeIntBigEndian(message, intVal, offset, SSIZE);
+        offset = encodeIntBigEndian(message, intVal, offset, ISIZE);
         encodeIntBigEndian(message, longVal, offset, LSIZE);
         out.println("Mensaje decodificado: " + byteArrayToDecimalString(message));
         
         //DECODIFICAR VARIOS CAMPOS
+        //Nota: La salida debe mostrar los valores decodificados equivalentes a las constantes originales.
+        long value = decodeIntBigEndian(message, BSIZE, SSIZE);
+        out.println("SHORT decodificado = " + value);
+        value = decodeIntBigEndian(message, BSIZE + SSIZE + ISIZE, LSIZE);
+        out.println("LONG decodificado = " + value);
         
+        //Demostrar peligros de conversión
+        offset = 4;
+        value = decodeIntBigEndian(message, offset, BSIZE);
+        out.println("Valor Decodificado (offset " + offset + ", size " + BSIZE + ") = " + value );
+        byte bVal = (byte) decodeIntBigEndian(message, offset, BSIZE);
+        out.println("El mismo valor en bytes = " + bVal);
     }
     
     
