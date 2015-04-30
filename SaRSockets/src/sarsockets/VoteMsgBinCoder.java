@@ -92,3 +92,13 @@ public class VoteMsgBinCoder implements VoteMsgCoder{
 
     
 }
+/*codificar y decodificar mensaje de manera binaria
+ A continuación presentamos una manera diferente para codificar el mensaje de protocolo de votación. En contraste con el
+formato basado en texto, el formato binario utiliza mensajes de tamaño fijo. Cada mensaje comienza con una
+campo de un byte que contiene la "magia" valor de 010.101 en sus de orden seis bits. Este poco
+de redundancia proporciona el receptor con un pequeño grado de seguridad de que se está recibiendo una
+mensaje de votación adecuado. Los dos bits de orden inferior del primer byte codifican las dos booleanos. La
+segundo byte del mensaje siempre contiene ceros, y los tercero y cuarto bytes contienen el
+candidateID. Los últimos ocho bytes de un mensaje de respuesta (solamente) contienen el recuento de votos. 
+
+*/

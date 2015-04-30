@@ -54,3 +54,16 @@ public class DelimFramer implements Framer{
     }
     
 }
+
+/*
+ El DelimFramer.java clase implementa encuadre basado en delimitador utilizando la caracter - "nueva línea"
+("\ n", valor de byte 10). El método frameMethod () no no hacer el relleno, sino que simplemente lanza
+una excepción si la secuencia de bytes que se enmarca contiene el delimitador. (Extendiendo el método
+hacer el relleno se deja como ejercicio.) El método nextMsg () analiza la corriente hasta que lea el
+delimitador, luego regresa todo hasta el delimitador;
+nulo
+se devuelve si la corriente está vacía.
+Si se acumulan algunos bytes de un mensaje y la corriente termina sin encontrar un delimitador,
+se emite una excepción para indicar un error de trama. 
+
+*/

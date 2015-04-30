@@ -91,3 +91,26 @@ public class VoteMsgTextCoder implements VoteMsgCoder{
   
   
 }
+
+
+/*codificar y decodificar mensaje 
+ En primer lugar, presentamos una versión en la que los mensajes se codifican como texto. El protocolo especifica que
+el texto se codifica mediante el juego de caracteres US-ASCII. El mensaje comienza con una llamada "magia 
+ cadena "-una secuencia de caracteres que permite a un receptor a reconocer rápidamente el mensaje como
+un mensaje de protocolo de votación, a diferencia de la basura aleatoria que pasó para llegar al
+red. El boolean Votar / mensaje se codifica con el carácter 'v' para una votación o "i" para una
+investigación. El estado del mensaje como una respuesta se indica por la presencia del carácter 'R'.
+Luego viene el ID de candidato, seguido por el recuento de votos, tanto codificados como cadenas decimales. La
+VoteMsgTextCoder ofrece una codificación basada en texto de VoteMsg. 
+
+
+
+ Su programa debe estar siempre preparado para cualquier entradas posibles, y manejarlos con gracia.
+En este caso, el método fromWire () lanza una excepción si la cadena esperada no se encuentra presente.
+De lo contrario, se pone los campos token modo, utilizando el ejemplo de escáner. Tenga en cuenta que el número de
+campos en el mensaje depende de si se trata de una petición (enviado por el cliente) o la respuesta (enviado
+por el servidor). fromWire () lanza una excepción si la entrada termina prematuramente o es de otra manera
+con formato incorrecto. 
+
+
+*/

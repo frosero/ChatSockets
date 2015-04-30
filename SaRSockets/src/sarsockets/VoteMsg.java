@@ -75,3 +75,36 @@ public class VoteMsg {
   }
             
 }
+
+/*
+
+
+ En la aplicación de un protocolo, es útil definir una clase para contener la información transportada
+en un mensaje. La clase proporciona métodos para la manipulación de los campos del mensaje mientras-
+el mantenimiento de los invariantes que se supone que mantenga entre los campos. Para nuestro simple ejem-
+plo, los mensajes enviados por el cliente y el servidor son muy similares. La única diferencia es que la
+los mensajes enviados por el servidor contienen el recuento de votos y una bandera que indica que son respuestas
+(no peticiones). En este caso, podemos salir con una sola clase para ambos tipos de mensajes.
+
+
+
+ Clase VoteMsg.java muestra la información básica de cada mensaje:
+■
+un booleano isInquiry , lo cual es cierto si la transacción solicitada es una investigación (y falsa si
+es un voto real);
+■
+un booleano isResponse que indica si el mensaje es una respuesta (enviado por el servidor) o
+solicitud;
+■
+un número entero candidateID que identifica el candidato;
+■
+un largo voteCount indicando el total de votos para el candidato solicitado
+La clase mantiene las siguientes invariantes entre los campos:
+■
+candidateID está en el rango de 0-1000.
+■
+voteCount sólo es distinto de cero en los mensajes de respuesta ( isResponse es cierto).
+■
+voteCount es no negativo.
+
+*/

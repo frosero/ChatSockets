@@ -44,3 +44,10 @@ public class VoteServerTCP {
       }
     
 }
+
+/*
+ Siguiente demostramos la versión TCP del servidor de votación. Aquí, el servidor acepta repetidamente
+una nueva conexión de cliente y utiliza la VoteService para generar respuestas a la votación del cliente
+mensajes. 
+
+*/

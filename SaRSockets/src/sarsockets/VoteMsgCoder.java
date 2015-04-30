@@ -13,3 +13,10 @@ public interface VoteMsgCoder {
     VoteMsg fromWire(byte[] input) throws IOException;
     
 }
+
+
+/*interface codificación de mensaje
+ Ahora que tenemos una representación Java de un mensaje votar, necesitamos alguna manera de codificar
+y decodificar de acuerdo con algún protocolo. Un VoteMsgCoder proporciona los métodos para mensaje votar
+serialización y deserialización. 
+*/

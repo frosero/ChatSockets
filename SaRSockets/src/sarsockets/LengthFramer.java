@@ -50,3 +50,15 @@ public class LengthFramer implements Framer {
     }
     
 }
+
+
+/*
+ El LengthFramer.java clase implementa encuadre basado en las tallas de mensajes de hasta 65.535
+(2~16- 1) bytes de longitud. El emisor determina la longitud del mensaje dado y escribe
+que el flujo de salida como de dos bytes, número entero big-endian, seguido por el mensaje completo.
+En el lado receptor, se utiliza un DataInputStream para ser capaz de leer la longitud como un entero;
+los readFully () bloques de método hasta que la matriz dada es completamente lleno, que es exactamente lo
+que necesitamos aquí. Tenga en cuenta que, con este método encuadre, el remitente no tiene que inspeccionar el
+el contenido del mensaje que se enmarca; se necesita sólo para comprobar que el mensaje no exceda
+el límite de longitud. 
+*/
