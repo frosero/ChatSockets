@@ -62,6 +62,10 @@ public class VoteMsg {
     voteCount = count;
   }
   
+    public long getVoteCount() {
+    return voteCount;
+  }
+  
   public String toString(){
       String res = (isInquiry ? "Investigación" : "voto") + " para el candidato " + candidateID;
       if(isResponse){
