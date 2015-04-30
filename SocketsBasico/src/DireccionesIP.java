@@ -12,7 +12,7 @@ public class DireccionesIP {
           out.println("Mi equipo es: " + equipo);
           out.println("Su dirección IP es: " + equipo.getHostAddress()); //regresa un string de la representación decimal de la dirección IP
           out.println("Su nombre es: " + equipo.getHostName()); //regresa un string equivalente al nombre de dominio de la dirección IP
-          out.println("Y su nombre canónico: " + equipo.getCanonicalHostName()); //se obtiene el nombre completo del host correspondiente a una dirección IP. (Nombre original)
+          out.println("Y su nombre canónico: " + equipo.getCanonicalHostName()); //se obtiene el nombre completo del host correspondiente a una dirección IP. 
           out.println();
           
           //OBTENEMOS EL OBJETO EQUIPO A PARTIR DEL NOMBRE
