@@ -60,6 +60,12 @@ public class VoteMsgBinCoder implements VoteMsgCoder{
             if (input.length < MIN_WIRE_LENGTH) {
       throw new IOException("mensaje de ronda");
     }
+    /*  Al igual que en la sección 3.1.1, creamos un ByteArrayOutputStream y se envuelve en una DataOutputStream
+        para recibir el resultado. El método de codificación toma ventaja del hecho de que el alto orden
+        dos bytes de un candidateID válidos son siempre cero. Tenga en cuenta también el uso de bit a bit-u operaciones a
+        codificar los booleanos utilizando un solo bit cada uno. 
+            
+    */
     ByteArrayInputStream bs = new ByteArrayInputStream(input);
     DataInputStream in = new DataInputStream(bs);
     int magic = in.readShort();
