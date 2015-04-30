@@ -6,7 +6,10 @@ import java.util.Map;
 
 public class VoteService {
     // Mapa de candidatos con respecto número de votos
-  private Map<Integer, Long> results = new HashMap<Integer, Long>();
+  private Map<Integer, Long> results = new HashMap<Integer, Long>(); //Para cualquier consulta, el ID de candidato determinado
+                                                                     //se utiliza para buscar un paso de votar por el candidato
+                                                                     //en el mapa. Por votos, el voto cuente incrementado se 
+                                                                     //almacena de nuevo en el mapa
 
   public VoteMsg handleRequest(VoteMsg msg) {
     if (msg.isResponse()) { // Si a respondido o simplemente quiere enviar denuevo
