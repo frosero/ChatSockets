@@ -34,7 +34,7 @@ public class VoteServerUDP {
                 VoteMsg msg = coder.fromWire(encodedMsg);
                 msg = service.handleRequest(msg);
                 packet.setData(coder.toWire(msg));
-                System.out.println("Sending response (" + packet.getLength() + " bytes):");
+                System.out.println("Enviando Respuesta (" + packet.getLength() + " bytes):");
                 System.out.println(msg);
                 sock.send(packet);
 
