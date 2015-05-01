@@ -24,11 +24,13 @@ public class VoteServerUDP {
         while (true) {
 
             DatagramPacket packet = new DatagramPacket(inBuffer, inBuffer.length);
+            //UDP hace el encuadre para nosotros!
             sock.receive(packet);
             byte[] encodedMsg = Arrays.copyOfRange(packet.getData(), 0, packet.getLength());
             out.println("Manejo de petición de " + packet.getSocketAddress() + " ("
                     + encodedMsg.length + " bytes)");
             try {
+                //El servicio devuelve una respuesta al mensaje
                 VoteMsg msg = coder.fromWire(encodedMsg);
                 msg = service.handleRequest(msg);
                 packet.setData(coder.toWire(msg));
