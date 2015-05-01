@@ -67,9 +67,9 @@ public class VoteMsg {
   }
   
   public String toString(){
-      String res = (isInquiry ? "Investigación" : "voto") + " para el candidato " + candidateID;
+      String res = (isInquiry ? "Investigación" : "votos") + " para el candidato: " + candidateID;
       if(isResponse){
-          res = "Respuesta a " + res + " que ahora tiene " + voteCount + " vote(s)";
+          res = "Respuesta a " + res + " que ahora tiene " + voteCount + " voto(s)";
       }
       return res;
   }
