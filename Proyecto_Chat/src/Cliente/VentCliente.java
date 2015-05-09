@@ -148,11 +148,11 @@ public class VentCliente extends JFrame {
             JOptionPane.showMessageDialog(null, "ERROR" + e.getMessage());
         }
 
-        try{
-            UIManager.setLookAndFeel(new SynthLookAndFeel());
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "ERROR"+e.getMessage());
-        }
+//        try{
+//            UIManager.setLookAndFeel(new SynthLookAndFeel());
+//        }catch(Exception e){
+//            JOptionPane.showMessageDialog(null, "ERROR"+e.getMessage());
+//        }
         setVisible(true); //hace visible la ventana
 
     }
