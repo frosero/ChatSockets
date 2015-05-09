@@ -11,6 +11,7 @@ import Reproductor.Grabador;
 import Reproductor.Sonido;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -115,30 +116,20 @@ public class VentCliente extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
-                ImageIcon icon;
-                icon = createImageIcon("/imagenes/rec.jpg");
-                JLabel label1 = new JLabel("Grabando",
-                        icon,
-                        JLabel.CENTER);
+                Component frame = null;
+                JOptionPane.showMessageDialog(frame, "Comenzando a grabar por 20 segundos");
+                Grabador gb = new Grabador();
 
-                label1.setVerticalTextPosition(JLabel.BOTTOM);
-                label1.setHorizontalTextPosition(JLabel.CENTER);
-
-                JLabel label2 = new JLabel("Text-Only Label");
-
-//                Grabador gb = new Grabador();
-                label1.setLabelFor(label1);
             }
 
-            private ImageIcon createImageIcon(String imagenesrecjpg) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
         });
         //accion que realiza el boton reproducir
         reproductor.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
+                Component frame = null;
+                JOptionPane.showMessageDialog(frame, "Reproduciendo la grabacion");
                 Sonido sd = new Sonido();
             }
         }
@@ -149,7 +140,7 @@ public class VentCliente extends JFrame {
 
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbuz".equals(info.getName())) {
+                if ("Cliente".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
