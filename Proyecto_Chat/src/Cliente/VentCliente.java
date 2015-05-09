@@ -17,17 +17,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.ServerSocket;
 import java.net.Socket;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.plaf.synth.SynthLookAndFeel;
 
 /**
  *
@@ -136,7 +135,7 @@ public class VentCliente extends JFrame {
         );
 
         ipServidor = JOptionPane.showInputDialog(null, "Introduzca la IP del Servidor");
-        setSize(320, 500); //tamanio de la ventana del chat
+        setSize(500, 500); //tamanio de la ventana del chat
 
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -149,11 +148,11 @@ public class VentCliente extends JFrame {
             JOptionPane.showMessageDialog(null, "ERROR" + e.getMessage());
         }
 
-//        try{
-//            UIManager.setLookAndFeel(new SynthLookAndFeel());
-//        }catch(Exception e){
-//            JOptionPane.showMessageDialog(null, "ERROR"+e.getMessage());
-//        }
+        try{
+            UIManager.setLookAndFeel(new SynthLookAndFeel());
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "ERROR"+e.getMessage());
+        }
         setVisible(true); //hace visible la ventana
 
     }
