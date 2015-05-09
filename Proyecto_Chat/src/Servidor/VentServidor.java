@@ -98,8 +98,6 @@ public class VentServidor extends JFrame{
                 }
             }
         });
-//        ImageIcon icono=(new ImageIcon(getClass().getResource("/imagenes/ip.jpg")));
-//        ipCliente = (String) JOptionPane.showInputDialog(null, "Introduzca numero IP del Cliente: ", "IP Cliente", JOptionPane.INFORMATION_MESSAGE, icono, null, "");
         ipCliente = JOptionPane.showInputDialog(null, "Introduzca numero IP del CLiente: ");
         
         setSize(320, 500);//tamano de la ventana del chat
@@ -115,11 +113,7 @@ public class VentServidor extends JFrame{
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "ERROR"+e.getMessage());
         }
-//        try{
-//            UIManager.setLookAndFeel(new SynthLookAndFeel());
-//        }catch(Exception e){
-//            JOptionPane.showMessageDialog(null, "ERROR"+e.getMessage());
-//        }
+
         setVisible(true); //hace visible a la ventana
 
     }
@@ -149,12 +143,12 @@ public class VentServidor extends JFrame{
                     hr.start();
                     
                 } catch (IOException ex) {
-                    Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(VentServidor.class.getName()).log(Level.SEVERE, null, ex);
                     ventanaServidor.mostrarMensaje("No se puede conectar con el cliente");
                 }
             }
         } catch (IOException ex) {
-            Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VentServidor.class.getName()).log(Level.SEVERE, null, ex);
             ventanaServidor.mostrarMensaje("No se encuentra IP del Servidor");
         }
     }
