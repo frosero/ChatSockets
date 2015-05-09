@@ -5,6 +5,7 @@
  */
 package Cliente;
 
+import static Cliente.VentCliente.usuario;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -24,7 +25,7 @@ public class ThreadRecibir {
     private Socket cliente;
     
     //constructor
-    public hiloRecibir(Socket cliente, Cliente ventanaCliente){
+    public ThreadRecibir(Socket cliente, VentCliente ventanaCliente){
         this.cliente=cliente;
         this.ventaCliente=ventanaCliente;
     }
@@ -39,7 +40,7 @@ public class ThreadRecibir {
         try{
             entrada = new ObjectInputStream(cliente.getInputStream());
         }catch (IOException ex) {
-            Logger.getLogger(hiloRecibir.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ThreadRecibir.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         do {
@@ -52,7 +53,7 @@ public class ThreadRecibir {
                 ventaCliente.mostrarMensaje(usuario+" Desconectado");
                 mensaje ="xxxx";
             } catch (IOException ex) {
-                Logger.getLogger(hiloRecibir.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ThreadRecibir.class.getName()).log(Level.SEVERE, null, ex);
                 ventaCliente.mostrarMensaje(usuario+ "Desconectado");
                 mensaje ="xxxx";
             } catch (ClassNotFoundException classNotFoundException) {
