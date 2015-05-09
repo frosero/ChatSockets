@@ -26,6 +26,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.plaf.synth.SynthLookAndFeel;
 
 /**
  *
@@ -35,6 +37,8 @@ public class VentServidor extends JFrame{
     public JTextField ingresoMensaje;
     public JTextArea pantallaChat;
     public JMenuItem adjuntar;
+    public JMenuItem grabacion;
+    public JMenuItem reproductor;
     private static ServerSocket servidor;
     private static Socket cliente;
     private static String ipCliente;
@@ -65,10 +69,14 @@ public class VentServidor extends JFrame{
         
         JMenuItem salir = new JMenuItem("Salir");
         adjuntar = new JMenuItem("Adjuntar Archivo");
-        adjuntar.setEnabled(false);
+        adjuntar.setEnabled(true);
+        grabacion = new JMenuItem("Grabacion");
+        reproductor = new JMenuItem("Reproducir");
         JMenuBar barra = new JMenuBar();
         setJMenuBar(barra);
         barra.add(salir);
+        barra.add(grabacion);
+        barra.add(reproductor);
         barra.add(adjuntar);
 
         //Accion que se realiza Salir
@@ -100,9 +108,8 @@ public class VentServidor extends JFrame{
         });
         ipCliente = JOptionPane.showInputDialog(null, "Introduzca numero IP del CLiente: ");
         
-        setSize(320, 500);//tamano de la ventana del chat
+        setSize(500, 500);//tamano de la ventana del chat
         
-        setIconImage(new ImageIcon(getClass().getResource("/imagenes/icono.png")).getImage());
         try{
             for(javax.swing.UIManager.LookAndFeelInfo info:javax.swing.UIManager.getInstalledLookAndFeels()){
                 if("Nimbuz".equals(info.getName())){
@@ -113,6 +120,11 @@ public class VentServidor extends JFrame{
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "ERROR"+e.getMessage());
         }
+//                try{
+//            UIManager.setLookAndFeel(new SynthLookAndFeel());
+//        }catch(Exception e){
+//            JOptionPane.showMessageDialog(null, "ERROR"+e.getMessage());
+//        }
 
         setVisible(true); //hace visible a la ventana
 
