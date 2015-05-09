@@ -7,8 +7,11 @@ package Servidor;
 
 import EnvioYReciboArchivos.EnviarArchivo;
 import EnvioYReciboArchivos.RecibirArchivo;
+import Reproductor.Grabador;
+import Reproductor.Sonido;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,7 +36,8 @@ import javax.swing.plaf.synth.SynthLookAndFeel;
  *
  * @author Felipe Rosero & Patricio Rodriguez
  */
-public class VentServidor extends JFrame{
+public class VentServidor extends JFrame {
+
     public JTextField ingresoMensaje;
     public JTextArea pantallaChat;
     public JMenuItem adjuntar;
@@ -44,29 +48,28 @@ public class VentServidor extends JFrame{
     private static String ipCliente;
     public static String usuario;
     public static VentServidor ventanaServidor;
-    
+
     //constructor
-    public VentServidor(){
+    public VentServidor() {
         super();
         //campo de texto en el area inferior
-        ingresoMensaje=new JTextField();
+        ingresoMensaje = new JTextField();
         ingresoMensaje.setEditable(false);
         add(ingresoMensaje, BorderLayout.SOUTH);
-        
+
         //area del chat
-        pantallaChat=new JTextArea();
+        pantallaChat = new JTextArea();
         pantallaChat.setEditable(false);
-        Font fuente1=new Font("Dialog", Font.BOLD|Font.ITALIC, 14);
+        Font fuente1 = new Font("Dialog", Font.BOLD | Font.ITALIC, 14);
         pantallaChat.setFont(fuente1);
         add(new JScrollPane(pantallaChat), BorderLayout.CENTER);
         pantallaChat.setBackground(Color.BLUE);
         pantallaChat.setForeground(Color.white);
         ingresoMensaje.setForeground(Color.blue);
-        Font fuente=new Font("Dialog", Font.BOLD|Font.ITALIC, 14);
+        Font fuente = new Font("Dialog", Font.BOLD | Font.ITALIC, 14);
         ingresoMensaje.setFont(fuente);
-        
+
         //crea opciones de salir y adjuntar
-        
         JMenuItem salir = new JMenuItem("Salir");
         adjuntar = new JMenuItem("Adjuntar Archivo");
         adjuntar.setEnabled(true);
@@ -101,24 +104,47 @@ public class VentServidor extends JFrame{
                     EnviarArchivo enviarArchivo = new EnviarArchivo(ipCliente, direccion);
                     enviarArchivo.start();
                     ventanaServidor.mostrarMensaje("Archivo Enviado Existosamente");
-                   
 
                 }
             }
         });
+        //accion que realiza el boton  grabador
+        grabacion.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                Component frame = null;
+                JOptionPane.showMessageDialog(frame, "Comenzando a grabar por 20 segundos");
+                Grabador gb = new Grabador();
+
+            }
+
+        });
+
+        //accion que realiza el boton reproducir
+        reproductor.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                Component frame = null;
+                JOptionPane.showMessageDialog(frame, "Reproduciendo la grabacion");
+                Sonido sd = new Sonido();
+            }
+        }
+        );
         ipCliente = JOptionPane.showInputDialog(null, "Introduzca numero IP del CLiente: ");
-        
+
         setSize(500, 500);//tamano de la ventana del chat
-        
-        try{
-            for(javax.swing.UIManager.LookAndFeelInfo info:javax.swing.UIManager.getInstalledLookAndFeels()){
-                if("Nimbuz".equals(info.getName())){
+
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbuz".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "ERROR"+e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR" + e.getMessage());
         }
 //                try{
 //            UIManager.setLookAndFeel(new SynthLookAndFeel());
@@ -138,7 +164,7 @@ public class VentServidor extends JFrame{
 
         try {
             //Crear el socket Servidor
-            
+
             servidor = new ServerSocket(11111, 100);
             ventanaServidor.mostrarMensaje("Esperando Cliente ...");
             //Bucle infinito para esperar conexiones de los clientes
@@ -153,7 +179,7 @@ public class VentServidor extends JFrame{
                     he.start();
                     ThreadRecibir hr = new ThreadRecibir(cliente, ventanaServidor);
                     hr.start();
-                    
+
                 } catch (IOException ex) {
                     Logger.getLogger(VentServidor.class.getName()).log(Level.SEVERE, null, ex);
                     ventanaServidor.mostrarMensaje("No se puede conectar con el cliente");
