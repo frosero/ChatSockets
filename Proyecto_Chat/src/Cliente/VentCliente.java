@@ -25,8 +25,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.plaf.synth.SynthLookAndFeel;
+
 
 /**
  *
