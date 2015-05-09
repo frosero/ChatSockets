@@ -16,14 +16,14 @@ import java.net.SocketException;
  *
  * @author Usuario
  */
-public class hiloEnviar extends Thread{
-    private final Servidor ventanaServidor;
+public class ThreadEnvio extends Thread{
+    private final VentServidor ventanaServidor;
     private ObjectOutputStream salida;
     private String mensaje;
     private Socket conexion;
     
     //constructor
-    public hiloEnviar(Socket conexion, final Servidor ventanaServidor){
+    public ThreadEnvio(Socket conexion, final VentServidor ventanaServidor){
         this.conexion=conexion;
         this.ventanaServidor=ventanaServidor;
         

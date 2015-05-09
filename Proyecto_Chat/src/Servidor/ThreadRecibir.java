@@ -17,14 +17,14 @@ import java.util.logging.Logger;
  *
  * @author Usuario
  */
-public class hiloRecibir extends Thread{
+public class ThreadRecibir extends Thread{
     private final VentServidor ventanaServidor;
     private String mensaje;
     private ObjectInputStream entrada;
     private Socket cliente;
     
     //constructor
-    public hiloRecibir(Socket cliente, VentServidor ventaServidor){
+    public ThreadRecibir(Socket cliente, VentServidor ventaServidor){
         this.cliente=cliente;
         this.ventanaServidor=ventaServidor;
     }
@@ -37,7 +37,7 @@ public class hiloRecibir extends Thread{
         try{
             entrada=new ObjectInputStream(cliente.getInputStream());
         }catch(IOException ex){
-            Logger.getLogger(hiloRecibir.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ThreadRecibir.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         //leer el mensaje y mostrarlo
@@ -52,7 +52,7 @@ public class hiloRecibir extends Thread{
                 ventanaServidor.mostrarMensaje(ventanaServidor.usuario+" Desconectado");
                 mensaje="xxxxx";
             } catch(IOException ex){
-                Logger.getLogger(hiloRecibir.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ThreadRecibir.class.getName()).log(Level.SEVERE, null, ex);
             } catch(ClassNotFoundException nf){
                 ventanaServidor.mostrarMensaje("Objeto Desconocido");
             }

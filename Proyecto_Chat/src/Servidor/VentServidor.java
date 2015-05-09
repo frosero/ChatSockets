@@ -143,9 +143,9 @@ public class VentServidor extends JFrame{
                     ventanaServidor.mostrarMensaje("Conectado a : " + cliente.getInetAddress().getHostName());
                     ventanaServidor.habilitar(true);
                     //Correr los hilos de enviar y recibir
-                    hiloEnviar he = new hiloEnviar(cliente, ventanaServidor);
+                    ThreadEnvio he = new ThreadEnvio(cliente, ventanaServidor);
                     he.start();
-                    hiloRecibir hr = new hiloRecibir(cliente, ventanaServidor);
+                    ThreadRecibir hr = new ThreadRecibir(cliente, ventanaServidor);
                     hr.start();
                     
                 } catch (IOException ex) {
