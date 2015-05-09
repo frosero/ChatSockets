@@ -8,6 +8,7 @@ package Cliente;
 import EnvioYReciboArchivos.EnviarArchivo;
 import EnvioYReciboArchivos.RecibirArchivo;
 import Reproductor.Grabador;
+import Reproductor.Sonido;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -15,9 +16,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.ServerSocket;
 import java.net.Socket;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -27,9 +30,10 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Felipe Rosero & Patricio Rodriguez 
+ * @author Felipe Rosero & Patricio Rodriguez
  */
-public class VentCliente extends JFrame{
+public class VentCliente extends JFrame {
+
     public JTextField ingresoMensaje;
     public JTextArea pantallaChat;
     public JMenuItem grabacion;
@@ -53,26 +57,27 @@ public class VentCliente extends JFrame{
         //pantalla del chat
         pantallaChat = new JTextArea();
         pantallaChat.setEditable(false);
-        Font fuente = new Font("Dialog", Font.BOLD | Font.ITALIC, 14);
+        Font fuente = new Font("Dialog", Font.BOLD | Font.ITALIC, 20);
         pantallaChat.setFont(fuente);
         add(new JScrollPane(pantallaChat), BorderLayout.CENTER);
         pantallaChat.setBackground(Color.green);
         pantallaChat.setForeground(Color.yellow);
         ingresoMensaje.setForeground(Color.green);
-        Font fuente1 = new Font("Dialog", Font.BOLD | Font.ITALIC, 14);
+        Font fuente1 = new Font("Dialog", Font.BOLD | Font.ITALIC, 20);
         ingresoMensaje.setFont(fuente1);
 
         //creacion del menu
         JMenuItem salir = new JMenuItem("Exit");
         adjuntar = new JMenuItem("Adjuntar Archivo");
         adjuntar.setEnabled(true);
-        grabacion=new JMenuItem("Grabacion");
+        grabacion = new JMenuItem("Grabacion");
+        reproductor = new JMenuItem("Reproducir");
         JMenuBar barra = new JMenuBar();
         setJMenuBar(barra);
         barra.add(salir);
         barra.add(grabacion);
+        barra.add(reproductor);
         barra.add(adjuntar);
-        
 
         //accion que realiza el boton salir
         salir.addActionListener(new ActionListener() {
@@ -100,27 +105,48 @@ public class VentCliente extends JFrame{
                     EnviarArchivo ea = new EnviarArchivo(ipServidor, direccion);
                     ea.start();
                     ventanaCliente.mostrarMensaje("Archivo Enviado Exitosamente");
-                   
-                    
-                   
+
                 }
             }
-            
+
         });
-        //accion que realiza el boton 
+        //accion que realiza el boton  grabador
         grabacion.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
-                Grabador gb=new Grabador();
+                ImageIcon icon;
+                icon = createImageIcon("/imagenes/rec.jpg");
+                JLabel label1 = new JLabel("Grabando",
+                        icon,
+                        JLabel.CENTER);
+
+                label1.setVerticalTextPosition(JLabel.BOTTOM);
+                label1.setHorizontalTextPosition(JLabel.CENTER);
+
+                JLabel label2 = new JLabel("Text-Only Label");
+
+//                Grabador gb = new Grabador();
+                label1.setLabelFor(label1);
+            }
+
+            private ImageIcon createImageIcon(String imagenesrecjpg) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
-            
+        //accion que realiza el boton reproducir
+        reproductor.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                Sonido sd = new Sonido();
+            }
+        }
+        );
 
         ipServidor = JOptionPane.showInputDialog(null, "Introduzca la IP del Servidor");
         setSize(320, 500); //tamanio de la ventana del chat
-        
-       
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbuz".equals(info.getName())) {
@@ -140,13 +166,16 @@ public class VentCliente extends JFrame{
         setVisible(true); //hace visible la ventana
 
     }
-     public void mostrarMensaje(String mensaje) {
+
+    public void mostrarMensaje(String mensaje) {
         pantallaChat.append(mensaje + "\n");
-        
+
     }
+
     public static void main(String[] args) {
         ventanaCliente = new VentCliente();
     }
+
     public void habilitar(boolean editable) {
         ingresoMensaje.setEditable(editable);
         adjuntar.setEnabled(editable);
