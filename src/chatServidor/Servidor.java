@@ -109,7 +109,7 @@ public class Servidor extends JFrame{
         Component frame = null;
         ImageIcon icono=(new ImageIcon(getClass().getResource("/imagenes/ip.jpg")));
    
-       JOptionPane.showMessageDialog(frame,"Bienvenidos Al chat","FATSY",JOptionPane.INFORMATION_MESSAGE);
+       JOptionPane.showMessageDialog(frame,"Bienvenidos Al chat","FATSY",JOptionPane.INFORMATION_MESSAGE,icono);
 //       ipCliente = (String) JOptionPane.showInputDialog(null, "Introduzca numero IP del Cliente: ", "IP Cliente", JOptionPane.INFORMATION_MESSAGE, icono, null, "");
 //        ipCliente = JOptionPane.showInputDialog(null, "Introduzca numero IP del CLiente: ");
         
