@@ -29,6 +29,7 @@ public class Servidor extends JFrame{
     private static ServerSocket servidor;
     private static Socket cliente;
     private static String ipCliente;
+    private static String nomb;
     public static String usuario;
     public static Servidor ventanaServidor;
     public JMenuItem grabacion;
@@ -102,18 +103,28 @@ public class Servidor extends JFrame{
         Enumeration<InetAddress> addrList = iface.getInetAddresses();
         InetAddress address = addrList.nextElement();
         ipCliente=address.getHostAddress();
+
         }
         catch(SocketException se){
             out.println("Error al obtener las interfaces de red: " + se.getMessage()); //La llamada a getNetworkInterfaces () puede lanzar una SocketException.
          }
+        
+        //Obtener el nombre real del equipo
+        try {
+        InetAddress equipo =  InetAddress.getLocalHost();
+        nomb = equipo.getHostName();
+        }catch(UnknownHostException en){
+            out.println("No se puede obtener dirección de equipo: " + en);
+        }
+        
+        //Mensaje de Binvenida
         Component frame = null;
         ImageIcon icono=(new ImageIcon(getClass().getResource("/imagenes/ip.jpg")));
-   
-       JOptionPane.showMessageDialog(frame,"Bienvenidos Al chat","FATSY",JOptionPane.INFORMATION_MESSAGE,icono);
-//       ipCliente = (String) JOptionPane.showInputDialog(null, "Introduzca numero IP del Cliente: ", "IP Cliente", JOptionPane.INFORMATION_MESSAGE, icono, null, "");
-//        ipCliente = JOptionPane.showInputDialog(null, "Introduzca numero IP del CLiente: ");
-        
-        setSize(320, 500);//tamano de la ventana del chat
+       String nl = System.getProperty("line.separator");
+       JOptionPane.showMessageDialog(frame,"-- BIENVENIDOS A NUESTRO CHAT --" + nl + nl + "El nombre del equipo Servidor es:" + nl + nomb 
+                        + nl + nl + "Creado por:" + nl + "Felipe y Patricio","FATSY - SERVIDOR",JOptionPane.INFORMATION_MESSAGE,icono);
+  
+        setSize(620, 500);//tamano de la ventana del chat
         
         setIconImage(new ImageIcon(getClass().getResource("/imagenes/icono.png")).getImage());
         try{
