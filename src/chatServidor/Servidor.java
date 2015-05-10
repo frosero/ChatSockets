@@ -94,6 +94,8 @@ public class Servidor extends JFrame{
                 }
             }
         });
+        
+        //Método para obtener dirección IPv4 de la computadora Servidor
         try{
         Enumeration<NetworkInterface> interfaceList = NetworkInterface.getNetworkInterfaces();
         NetworkInterface iface = interfaceList.nextElement();
@@ -104,8 +106,10 @@ public class Servidor extends JFrame{
         catch(SocketException se){
             out.println("Error al obtener las interfaces de red: " + se.getMessage()); //La llamada a getNetworkInterfaces () puede lanzar una SocketException.
          }
-        
+        Component frame = null;
         ImageIcon icono=(new ImageIcon(getClass().getResource("/imagenes/ip.jpg")));
+   
+       JOptionPane.showMessageDialog(frame,"Bienvenidos Al chat","FATSY",JOptionPane.INFORMATION_MESSAGE);
 //       ipCliente = (String) JOptionPane.showInputDialog(null, "Introduzca numero IP del Cliente: ", "IP Cliente", JOptionPane.INFORMATION_MESSAGE, icono, null, "");
 //        ipCliente = JOptionPane.showInputDialog(null, "Introduzca numero IP del CLiente: ");
         
